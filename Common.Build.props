@@ -18,5 +18,6 @@
         <Company>Falko Team</Company>
         <Authors>Rima Falko; Timur Falko</Authors>
         <Description>The Falko Common Library contains reusable code that we use across our projects</Description>
+        <Copyright>Copyright (C) 2024-2025, Falko Team</Copyright>
     </PropertyGroup>
 </Project>
