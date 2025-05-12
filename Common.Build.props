@@ -1,0 +1,22 @@
+<Project>
+    <Import Project="Directory.Build.props" Condition="!$(DirectoryBuildPropsImported)" />
+
+    <PropertyGroup Label="Assembly">
+        <Version>1.0.0</Version>
+        <TargetFramework>net9.0</TargetFramework>
+        <IsAotCompatible>true</IsAotCompatible>
+        <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+    </PropertyGroup>
+
+    <PropertyGroup Label="Language">
+        <LangVersion>13</LangVersion>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+    </PropertyGroup>
+
+    <PropertyGroup Label="Description">
+        <Company>Falko Team</Company>
+        <Authors>Rima Falko; Timur Falko</Authors>
+        <Description>The Falko Common Library contains reusable code that we use across our projects</Description>
+    </PropertyGroup>
+</Project>
