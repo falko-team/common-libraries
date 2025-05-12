@@ -12,21 +12,14 @@ modification, are permitted provided that the following conditions are met:
    this list of conditions and the following disclaimer in the documentation
    and/or other materials provided with the distribution.
 
-3. Redistributions or use of the source code, binary, or any derivative works may not be for military purposes,
-   including but not limited to the development, testing, or deployment
-   of military systems, weapons, or surveillance tools intended for military use.
+3. Redistributions or use of the source code, binary, or any derivative works
+   may not be used in the development, testing, or deployment of systems intended primarily
+   for military operations or surveillance systems for military purposes.
 
-4. Redistributions or use of the source code, binary, or any derivative works may not be for surveillance purposes,
-   including but not limited to the development, testing, or deployment
-   of systems intended for unauthorized monitoring, data collection, or espionage
-   targeting individuals or organizations without their explicit consent.
-
-5. Redistributions or use of the source code, binary, or any derivative works may not be for activities that violate
-   the laws of Spain or the European Union, including but not limited
-   to the development, testing, or deployment of systems or tools
-   that facilitate illegal activities, infringe on intellectual property rights,
-   or compromise privacy and data protection regulations
-   under the General Data Protection Regulation (GDPR) or other applicable laws.
+4. Redistributions or use of the source code, binary,
+   or derivative works may not be used for any activity that violates applicable laws,
+   including but not limited to intellectual property rights, privacy regulations,
+   or other legal frameworks governing data protection.
 
 > THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
 AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
