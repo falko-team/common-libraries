@@ -1,3 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup Label="Language">
+        <RootNamespace>Falko.Concurrents</RootNamespace>
+    </PropertyGroup>
+    
     <Import Project="../../Sources.Build.props" />
 </Project>
