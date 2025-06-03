@@ -1,3 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <Import Project="../../Sources.Build.props" />
+    <ItemGroup>
+      <ProjectReference Include="..\Falko.Common.Concurrents\Falko.Common.Concurrents.csproj" />
+    </ItemGroup>
 </Project>
