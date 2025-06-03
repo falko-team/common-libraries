@@ -30,15 +30,12 @@ public partial class FrozenSequence<T>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public bool MoveNext()
         {
-            var index = _currentIndex + 1;
+            var nextIndex = _currentIndex + 1;
 
-            if (index < _valuesCount)
-            {
-                _currentIndex = index;
-                return true;
-            }
+            if (nextIndex >= _valuesCount) return false;
 
-            return false;
+            _currentIndex = nextIndex;
+            return true;
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
