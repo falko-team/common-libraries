@@ -67,7 +67,6 @@ internal static class SequenceExceptions
     }
 
     [DoesNotReturn]
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public static void ThrowNotMatchAny()
     {
         throw new InvalidOperationException("The source sequence does not match any of the specified conditions.");
