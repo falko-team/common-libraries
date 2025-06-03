@@ -19,11 +19,9 @@ public partial class FrozenSequence<T> : SequenceOperator<T>.ILastOperator
 
     public T Last(Func<T, bool> predicate)
     {
-        var itemsCount = _itemsCount;
-
-        SequenceExceptions.ThrowIfEmpty(itemsCount);
-
         ArgumentNullException.ThrowIfNull(predicate);
+
+        var itemsCount = _itemsCount;
 
         scoped ref var itemsReference = ref MemoryMarshal.GetArrayDataReference(_items);
 
@@ -50,11 +48,9 @@ public partial class FrozenSequence<T> : SequenceOperator<T>.ILastOperator
 
     public T? LastOrDefault(Func<T, bool> predicate)
     {
-        var itemsCount = _itemsCount;
-
-        if (itemsCount is 0) return default;
-
         ArgumentNullException.ThrowIfNull(predicate);
+
+        var itemsCount = _itemsCount;
 
         scoped ref var itemsReference = ref MemoryMarshal.GetArrayDataReference(_items);
 
