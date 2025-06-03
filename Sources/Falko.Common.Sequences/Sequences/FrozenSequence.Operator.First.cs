@@ -20,7 +20,7 @@ public partial class FrozenSequence<T> : SequenceOperator<T>.IFirstOperator
     {
         ArgumentNullException.ThrowIfNull(predicate);
 
-        foreach (var item in this)
+        foreach (ref readonly var item in this)
         {
             if (predicate(item)) return item;
         }
