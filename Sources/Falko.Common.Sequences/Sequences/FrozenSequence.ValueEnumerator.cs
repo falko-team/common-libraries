@@ -16,6 +16,7 @@ public partial class FrozenSequence<T>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal ValueEnumerator(T[] values, int valuesCount)
         {
+            _currentIndex = -1;
             _valuesReference = ref MemoryMarshal.GetArrayDataReference(values);
             _valuesCount = valuesCount;
         }
@@ -29,19 +30,18 @@ public partial class FrozenSequence<T>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public bool MoveNext()
         {
-            var currentIndex = _currentIndex;
+            var nextIndex = _currentIndex + 1;
 
-            if (currentIndex == _valuesCount) return false;
+            if (nextIndex >= _valuesCount) return false;
 
-            _currentIndex = currentIndex + 1;
-
+            _currentIndex = nextIndex;
             return true;
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void Reset()
         {
-            _currentIndex = 0;
+            _currentIndex = -1;
         }
     }
 }

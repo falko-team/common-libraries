@@ -4,7 +4,7 @@ using Falko.Common.Sequences;
 
 namespace Benchmarks;
 
-public class FirstOperatorBenchmark
+public class LastOperatorBenchmark
 {
     private List<int>? _list;
 
@@ -23,7 +23,7 @@ public class FirstOperatorBenchmark
     {
         for (var i = 0; i < 3; i++)
         {
-            _ = _frozenSequence!.First(number => number is 50);
+            _ = _frozenSequence!.Last(number => number is 50);
         }
     }
 
@@ -32,7 +32,7 @@ public class FirstOperatorBenchmark
     {
         for (var i = 0; i < 3; i++)
         {
-            _ = _list!.First(number => number is 50);
+            _ = _list!.Last(number => number is 50);
         }
     }
 }
