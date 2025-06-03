@@ -20,13 +20,19 @@ public partial class FrozenSequence<T> : SequenceOperator<T>.IFirstOperator
     {
         ArgumentNullException.ThrowIfNull(predicate);
 
-        foreach (ref readonly var item in this)
+        var itemsCount = _itemsCount;
+
+        scoped ref var itemsReference = ref MemoryMarshal.GetArrayDataReference(_items);
+
+        for (var itemIndex = 0; itemIndex < itemsCount; itemIndex++)
         {
+            var item = Unsafe.Add(ref itemsReference, itemIndex);
+
             if (predicate(item)) return item;
         }
 
         SequenceExceptions.ThrowNotMatchAny();
-        return default!; // This line is unreachable
+        return default; // This line is unreachable
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -41,8 +47,14 @@ public partial class FrozenSequence<T> : SequenceOperator<T>.IFirstOperator
     {
         ArgumentNullException.ThrowIfNull(predicate);
 
-        foreach (ref readonly var item in this)
+        var itemsCount = _itemsCount;
+
+        scoped ref var itemsReference = ref MemoryMarshal.GetArrayDataReference(_items);
+
+        for (var itemIndex = 0; itemIndex < itemsCount; itemIndex++)
         {
+            var item = Unsafe.Add(ref itemsReference, itemIndex);
+
             if (predicate(item)) return item;
         }
 
