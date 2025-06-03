@@ -21,12 +21,18 @@ public class FirstOperatorBenchmark
     [Benchmark(Baseline = true)]
     public void FrozenSequenceFirst()
     {
-        _ = _frozenSequence!.First(number => number is 50);
+        for (var i = 0; i < 3; i++)
+        {
+            _ = _frozenSequence!.First(number => number is 50);
+        }
     }
 
     [Benchmark]
     public void ListFirst()
     {
-        _ = _list!.First(number => number is 50);
+        for (var i = 0; i < 3; i++)
+        {
+            _ = _list!.First(number => number is 50);
+        }
     }
 }
