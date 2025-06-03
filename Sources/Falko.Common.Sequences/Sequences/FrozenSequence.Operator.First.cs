@@ -20,8 +20,14 @@ public partial class FrozenSequence<T> : SequenceOperator<T>.IFirstOperator
     {
         ArgumentNullException.ThrowIfNull(predicate);
 
-        foreach (ref readonly var item in this)
+        scoped ref var itemsReference = ref MemoryMarshal.GetArrayDataReference(_items);
+
+        var itemsCount = _itemsCount;
+
+        for (var itemIndex = 0; itemIndex < itemsCount; itemIndex++)
         {
+            var item = Unsafe.Add(ref itemsReference, itemIndex);
+
             if (predicate(item)) return item;
         }
 
