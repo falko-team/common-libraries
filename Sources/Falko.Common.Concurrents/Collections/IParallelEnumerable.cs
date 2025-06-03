@@ -1,4 +1,4 @@
-namespace Falko.Concurrents.Collections;
+namespace Falko.Common.Collections;
 
 /// <summary>
 /// Represents a parallel enumerable. This enumerable can be enumerated in parallel.

@@ -11,12 +11,15 @@
     <File Path="License.md" />
     <File Path="Icon512.png" />
   </Folder>
+  <Folder Name="/Benchmarks/">
+    <Project Path="Benchmarks\Benchmarks\Benchmarks.csproj" Type="Classic C#" />
+  </Folder>
+  <Folder Name="/Examples/" />
   <Folder Name="/Sources/">
     <Project Path="Sources\Falko.Common.Assertions\Falko.Common.Assertions.csproj" Type="Classic C#" />
     <Project Path="Sources\Falko.Common.Concurrents\Falko.Common.Concurrents.csproj" Type="Classic C#" />
     <Project Path="Sources\Falko.Common.Confluences\Falko.Common.Confluences.csproj" Type="Classic C#" />
     <Project Path="Sources\Falko.Common.Disposables\Falko.Common.Disposables.csproj" Type="Classic C#" />
-    <Project Path="Sources\Falko.Common.Extensions\Falko.Common.Extensions.csproj" Type="Classic C#" />
     <Project Path="Sources\Falko.Common.Sequences\Falko.Common.Sequences.csproj" Type="Classic C#" />
   </Folder>
   <Folder Name="/Tests/" />

@@ -1,6 +1,6 @@
 using System.Diagnostics.CodeAnalysis;
 
-namespace Falko.Concurrents.Collections;
+namespace Falko.Common.Collections;
 
 /// <summary>
 /// Represents a parallel enumerator. This enumerator can be enumerated in parallel.

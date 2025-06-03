@@ -1,6 +1,6 @@
 using System.Runtime.CompilerServices;
 
-namespace Falko.Concurrents.Tasks;
+namespace Falko.Common.Tasks;
 
 public static partial class TaskExtensions
 {

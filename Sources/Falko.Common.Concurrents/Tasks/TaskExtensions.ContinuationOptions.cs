@@ -1,4 +1,4 @@
-namespace Falko.Concurrents.Tasks;
+namespace Falko.Common.Tasks;
 
 public static partial class TaskExtensions
 {
