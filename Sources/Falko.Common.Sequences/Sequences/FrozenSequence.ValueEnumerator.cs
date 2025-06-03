@@ -11,7 +11,7 @@ public partial class FrozenSequence<T>
 
         private readonly int _valuesCount;
 
-        private int _currentIndex;
+        private int _currentIndex = -1;
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal ValueEnumerator(T[] values, int valuesCount)
@@ -29,19 +29,13 @@ public partial class FrozenSequence<T>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public bool MoveNext()
         {
-            var currentIndex = _currentIndex;
-
-            if (currentIndex == _valuesCount) return false;
-
-            _currentIndex = currentIndex + 1;
-
-            return true;
+            return ++_currentIndex < _valuesCount;
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void Reset()
         {
-            _currentIndex = 0;
+            _currentIndex = -1;
         }
     }
 }
