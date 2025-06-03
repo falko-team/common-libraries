@@ -50,7 +50,6 @@ public partial class FrozenSequence<T> : IReadOnlySequence<T>
     /// Use the <see cref="AsEnumerable"/> method to iterate in asynchronous code.
     /// </remarks>
     /// <returns>An enumerator that can be used to iterate through the sequence.</returns>
-    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public ValueEnumerator GetEnumerator() => new(_items, _itemsCount);
 
     IEnumerator<T> IEnumerable<T>.GetEnumerator() => new Enumerator(_items, _itemsCount);
