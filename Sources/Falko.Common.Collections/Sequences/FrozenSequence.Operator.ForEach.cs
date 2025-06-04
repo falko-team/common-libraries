@@ -1,12 +1,12 @@
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using Falko.Common.Operators;
-using Falko.Common.Utils;
 
 namespace Falko.Common.Sequences;
 
 public partial class FrozenSequence<T> : SequenceOperator<T>.IForEachOperator
 {
+    [MethodImpl(MethodImplOptions.NoInlining)]
     public void ForEach(Action<T> action)
     {
         ArgumentNullException.ThrowIfNull(action);
@@ -20,6 +20,7 @@ public partial class FrozenSequence<T> : SequenceOperator<T>.IForEachOperator
         }
     }
 
+    [MethodImpl(MethodImplOptions.NoInlining)]
     public void ForEach(Action<T, int> action)
     {
         ArgumentNullException.ThrowIfNull(action);
@@ -33,6 +34,7 @@ public partial class FrozenSequence<T> : SequenceOperator<T>.IForEachOperator
         }
     }
 
+    [MethodImpl(MethodImplOptions.NoInlining)]
     public void ForEach<TArgument>(TArgument argument, Action<T, TArgument> action)
     {
         ArgumentNullException.ThrowIfNull(action);
@@ -46,6 +48,7 @@ public partial class FrozenSequence<T> : SequenceOperator<T>.IForEachOperator
         }
     }
 
+    [MethodImpl(MethodImplOptions.NoInlining)]
     public void ForEach<TArgument>(TArgument argument, Action<T, int, TArgument> action)
     {
         ArgumentNullException.ThrowIfNull(action);

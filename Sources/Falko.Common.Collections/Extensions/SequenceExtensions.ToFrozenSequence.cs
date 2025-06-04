@@ -1,4 +1,3 @@
-using System.Runtime.CompilerServices;
 using Falko.Common.Sequences;
 
 namespace Falko.Common.Extensions;

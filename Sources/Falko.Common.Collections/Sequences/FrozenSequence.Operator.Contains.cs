@@ -12,6 +12,7 @@ public partial class FrozenSequence<T> : SequenceOperator<T>.IContainsOperator
         return Contains(value, EqualityComparer<T>.Default);
     }
 
+    [MethodImpl(MethodImplOptions.NoInlining)]
     public bool Contains(T value, IEqualityComparer<T> comparer)
     {
         var itemsCount = _itemsCount;

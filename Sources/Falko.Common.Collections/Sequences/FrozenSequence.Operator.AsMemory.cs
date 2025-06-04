@@ -1,5 +1,4 @@
 using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
 using Falko.Common.Asserts;
 using Falko.Common.Operators;
 
