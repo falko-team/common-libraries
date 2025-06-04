@@ -6,6 +6,7 @@ namespace Falko.Common.Sequences;
 
 public partial class FrozenSequence<T> : SequenceOperator<T>.IToArrayOperator
 {
+    [MethodImpl(MethodImplOptions.NoInlining)]
     public T[] ToArray()
     {
         var itemsCount = _itemsCount;
@@ -19,6 +20,7 @@ public partial class FrozenSequence<T> : SequenceOperator<T>.IToArrayOperator
         return itemsBuffer;
     }
 
+    [MethodImpl(MethodImplOptions.NoInlining)]
     public T[] ToArray(int startIndex)
     {
         scoped var itemsSpan = AsSpan(startIndex);
@@ -34,6 +36,7 @@ public partial class FrozenSequence<T> : SequenceOperator<T>.IToArrayOperator
         return itemsBuffer;
     }
 
+    [MethodImpl(MethodImplOptions.NoInlining)]
     public T[] ToArray(int startIndex, int length)
     {
         scoped var itemsSpan = AsSpan(startIndex, length);
@@ -49,6 +52,7 @@ public partial class FrozenSequence<T> : SequenceOperator<T>.IToArrayOperator
         return itemsBuffer;
     }
 
+    [MethodImpl(MethodImplOptions.NoInlining)]
     public T[] ToArray(Index startIndex)
     {
         scoped var itemsSpan = AsSpan(startIndex);
@@ -64,6 +68,7 @@ public partial class FrozenSequence<T> : SequenceOperator<T>.IToArrayOperator
         return itemsBuffer;
     }
 
+    [MethodImpl(MethodImplOptions.NoInlining)]
     public T[] ToArray(Range range)
     {
         scoped var itemsSpan = AsSpan(range);

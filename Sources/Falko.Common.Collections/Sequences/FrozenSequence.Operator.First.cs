@@ -1,4 +1,3 @@
-using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using Falko.Common.Asserts;
@@ -16,6 +15,7 @@ public partial class FrozenSequence<T> : SequenceOperator<T>.IFirstOperator
         return _items[0];
     }
 
+    [MethodImpl(MethodImplOptions.NoInlining)]
     public T First(Func<T, bool> predicate)
     {
         ArgumentNullException.ThrowIfNull(predicate);
@@ -42,6 +42,7 @@ public partial class FrozenSequence<T> : SequenceOperator<T>.IFirstOperator
             : _items[0];
     }
 
+    [MethodImpl(MethodImplOptions.NoInlining)]
     public T? FirstOrDefault(Func<T, bool> predicate)
     {
         ArgumentNullException.ThrowIfNull(predicate);

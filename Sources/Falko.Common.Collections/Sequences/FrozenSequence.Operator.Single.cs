@@ -15,6 +15,7 @@ public partial class FrozenSequence<T> : SequenceOperator<T>.ISingleOperator
         return _items[0];
     }
 
+    [MethodImpl(MethodImplOptions.NoInlining)]
     public T Single(Func<T, bool> predicate)
     {
         ArgumentNullException.ThrowIfNull(predicate);
@@ -65,6 +66,7 @@ public partial class FrozenSequence<T> : SequenceOperator<T>.ISingleOperator
             : default;
     }
 
+    [MethodImpl(MethodImplOptions.NoInlining)]
     public T? SingleOrDefault(Func<T, bool> predicate)
     {
         ArgumentNullException.ThrowIfNull(predicate);

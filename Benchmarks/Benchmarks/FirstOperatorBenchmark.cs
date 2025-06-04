@@ -1,14 +1,18 @@
 using BenchmarkDotNet.Attributes;
+using BenchmarkDotNet.Engines;
+using BenchmarkDotNet.Jobs;
 using Falko.Common.Extensions;
 using Falko.Common.Sequences;
 
 namespace Benchmarks;
 
+[SimpleJob(RunStrategy.Throughput, RuntimeMoniker.Net90)]
+[SimpleJob(RunStrategy.Throughput, RuntimeMoniker.NativeAot90)]
 public class FirstOperatorBenchmark
 {
-    private List<int>? _list;
+    private List<int> _list = null!;
 
-    private FrozenSequence<int>? _frozenSequence;
+    private FrozenSequence<int> _frozenSequence = null!;
 
     [GlobalSetup]
     public void Setup()
@@ -23,7 +27,7 @@ public class FirstOperatorBenchmark
     {
         for (var i = 0; i < 3; i++)
         {
-            _ = _frozenSequence!.First(number => number is 50);
+            _ = _frozenSequence.First(static number => number is 50);
         }
     }
 
@@ -32,7 +36,7 @@ public class FirstOperatorBenchmark
     {
         for (var i = 0; i < 3; i++)
         {
-            _ = _list!.First(number => number is 50);
+            _ = _list.First(static number => number is 50);
         }
     }
 }

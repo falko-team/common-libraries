@@ -1,9 +1,13 @@
 using BenchmarkDotNet.Attributes;
+using BenchmarkDotNet.Engines;
+using BenchmarkDotNet.Jobs;
 using Falko.Common.Extensions;
 using Falko.Common.Sequences;
 
 namespace Benchmarks;
 
+[SimpleJob(RunStrategy.Throughput, RuntimeMoniker.Net90)]
+[SimpleJob(RunStrategy.Throughput, RuntimeMoniker.NativeAot90)]
 public class LastOperatorBenchmark
 {
     private List<int>? _list;

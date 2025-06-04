@@ -12,6 +12,7 @@ public partial class FrozenSequence<T> : SequenceOperator<T>.IAnyOperator
         return _itemsCount > 0;
     }
 
+    [MethodImpl(MethodImplOptions.NoInlining)]
     public bool Any(Func<T, bool> predicate)
     {
         ArgumentNullException.ThrowIfNull(predicate);
