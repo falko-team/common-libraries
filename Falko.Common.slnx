@@ -17,10 +17,9 @@
   <Folder Name="/Examples/" />
   <Folder Name="/Sources/">
     <Project Path="Sources\Falko.Common.Assertions\Falko.Common.Assertions.csproj" Type="Classic C#" />
+    <Project Path="Sources\Falko.Common.Collections\Falko.Common.Collections.csproj" Type="Classic C#" />
     <Project Path="Sources\Falko.Common.Concurrents\Falko.Common.Concurrents.csproj" Type="Classic C#" />
-    <Project Path="Sources\Falko.Common.Confluences\Falko.Common.Confluences.csproj" Type="Classic C#" />
     <Project Path="Sources\Falko.Common.Disposables\Falko.Common.Disposables.csproj" Type="Classic C#" />
-    <Project Path="Sources\Falko.Common.Sequences\Falko.Common.Sequences.csproj" Type="Classic C#" />
   </Folder>
   <Folder Name="/Tests/" />
 </Solution>

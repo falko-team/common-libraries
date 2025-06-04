@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <Import Project="../../Sources.Build.props" />
     <ItemGroup>
-      <ProjectReference Include="..\Falko.Common.Sequences\Falko.Common.Sequences.csproj" />
+      <ProjectReference Include="..\Falko.Common.Collections\Falko.Common.Collections.csproj" />
     </ItemGroup>
 </Project>
