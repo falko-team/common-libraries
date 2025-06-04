@@ -10,9 +10,9 @@ namespace Benchmarks;
 [SimpleJob(RunStrategy.Throughput, RuntimeMoniker.NativeAot90)]
 public class LastOperatorBenchmark
 {
-    private List<int>? _list;
+    private List<int> _list = null!;
 
-    private FrozenSequence<int>? _frozenSequence;
+    private FrozenSequence<int> _frozenSequence = null!;
 
     [GlobalSetup]
     public void Setup()
@@ -23,20 +23,20 @@ public class LastOperatorBenchmark
     }
 
     [Benchmark(Baseline = true)]
-    public void FrozenSequenceFirst()
+    public void FrozenSequenceLast()
     {
         for (var i = 0; i < 3; i++)
         {
-            _ = _frozenSequence!.Last(number => number is 50);
+            _ = _frozenSequence.Last(static number => number is 50);
         }
     }
 
     [Benchmark]
-    public void ListFirst()
+    public void ListLast()
     {
         for (var i = 0; i < 3; i++)
         {
-            _ = _list!.Last(number => number is 50);
+            _ = _list.Last(static number => number is 50);
         }
     }
 }
