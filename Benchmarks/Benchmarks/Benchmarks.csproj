@@ -12,7 +12,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\Sources\Falko.Common.Sequences\Falko.Common.Sequences.csproj" />
+      <ProjectReference Include="..\..\Sources\Falko.Common.Collections\Falko.Common.Collections.csproj" />
     </ItemGroup>
 
 </Project>
