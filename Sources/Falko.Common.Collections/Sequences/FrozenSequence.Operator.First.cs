@@ -34,6 +34,63 @@ public partial class FrozenSequence<T> : SequenceOperator<T>.IFirstOperator
         return default; // This line is unreachable
     }
 
+    [MethodImpl(MethodImplOptions.NoInlining)]
+    public T First(Func<T, int, bool> predicate)
+    {
+        ArgumentNullException.ThrowIfNull(predicate);
+
+        scoped ref var itemsReference = ref MemoryMarshal.GetArrayDataReference(_items);
+        var itemsCount = _itemsCount;
+
+        for (var itemIndex = 0; itemIndex < itemsCount; itemIndex++)
+        {
+            var item = Unsafe.Add(ref itemsReference, itemIndex);
+
+            if (predicate(item, itemIndex)) return item;
+        }
+
+        SequenceExceptions.ThrowNotMatchAny();
+        return default; // This line is unreachable
+    }
+
+    [MethodImpl(MethodImplOptions.NoInlining)]
+    public T First<TArgument>(TArgument argument, Func<T, TArgument, bool> predicate)
+    {
+        ArgumentNullException.ThrowIfNull(predicate);
+
+        scoped ref var itemsReference = ref MemoryMarshal.GetArrayDataReference(_items);
+        var itemsCount = _itemsCount;
+
+        for (var itemIndex = 0; itemIndex < itemsCount; itemIndex++)
+        {
+            var item = Unsafe.Add(ref itemsReference, itemIndex);
+
+            if (predicate(item, argument)) return item;
+        }
+
+        SequenceExceptions.ThrowNotMatchAny();
+        return default; // This line is unreachable
+    }
+
+    [MethodImpl(MethodImplOptions.NoInlining)]
+    public T First<TArgument>(TArgument argument, Func<T, int, TArgument, bool> predicate)
+    {
+        ArgumentNullException.ThrowIfNull(predicate);
+
+        scoped ref var itemsReference = ref MemoryMarshal.GetArrayDataReference(_items);
+        var itemsCount = _itemsCount;
+
+        for (var itemIndex = 0; itemIndex < itemsCount; itemIndex++)
+        {
+            var item = Unsafe.Add(ref itemsReference, itemIndex);
+
+            if (predicate(item, itemIndex, argument)) return item;
+        }
+
+        SequenceExceptions.ThrowNotMatchAny();
+        return default; // This line is unreachable
+    }
+
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public T? FirstOrDefault()
     {
@@ -55,6 +112,60 @@ public partial class FrozenSequence<T> : SequenceOperator<T>.IFirstOperator
             var item = Unsafe.Add(ref itemsReference, itemIndex);
 
             if (predicate(item)) return item;
+        }
+
+        return default;
+    }
+
+    [MethodImpl(MethodImplOptions.NoInlining)]
+    public T? FirstOrDefault(Func<T, int, bool> predicate)
+    {
+        ArgumentNullException.ThrowIfNull(predicate);
+
+        scoped ref var itemsReference = ref MemoryMarshal.GetArrayDataReference(_items);
+        var itemsCount = _itemsCount;
+
+        for (var itemIndex = 0; itemIndex < itemsCount; itemIndex++)
+        {
+            var item = Unsafe.Add(ref itemsReference, itemIndex);
+
+            if (predicate(item, itemIndex)) return item;
+        }
+
+        return default;
+    }
+
+    [MethodImpl(MethodImplOptions.NoInlining)]
+    public T? FirstOrDefault<TArgument>(TArgument argument, Func<T, TArgument, bool> predicate)
+    {
+        ArgumentNullException.ThrowIfNull(predicate);
+
+        scoped ref var itemsReference = ref MemoryMarshal.GetArrayDataReference(_items);
+        var itemsCount = _itemsCount;
+
+        for (var itemIndex = 0; itemIndex < itemsCount; itemIndex++)
+        {
+            var item = Unsafe.Add(ref itemsReference, itemIndex);
+
+            if (predicate(item, argument)) return item;
+        }
+
+        return default;
+    }
+
+    [MethodImpl(MethodImplOptions.NoInlining)]
+    public T? FirstOrDefault<TArgument>(TArgument argument, Func<T, int, TArgument, bool> predicate)
+    {
+        ArgumentNullException.ThrowIfNull(predicate);
+
+        scoped ref var itemsReference = ref MemoryMarshal.GetArrayDataReference(_items);
+        var itemsCount = _itemsCount;
+
+        for (var itemIndex = 0; itemIndex < itemsCount; itemIndex++)
+        {
+            var item = Unsafe.Add(ref itemsReference, itemIndex);
+
+            if (predicate(item, itemIndex, argument)) return item;
         }
 
         return default;
