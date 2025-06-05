@@ -36,6 +36,63 @@ public partial class FrozenSequence<T> : SequenceOperator<T>.ILastOperator
         return default!; // This line is unreachable
     }
 
+    [MethodImpl(MethodImplOptions.NoInlining)]
+    public T Last(Func<T, int, bool> predicate)
+    {
+        ArgumentNullException.ThrowIfNull(predicate);
+
+        scoped ref var itemsReference = ref MemoryMarshal.GetArrayDataReference(_items);
+        var itemsCount = _itemsCount;
+
+        for (var itemIndex = itemsCount - 1; itemIndex >= 0; itemIndex--)
+        {
+            var item = Unsafe.Add(ref itemsReference, itemIndex);
+
+            if (predicate(item, itemIndex)) return item;
+        }
+
+        SequenceExceptions.ThrowNotMatchAny();
+        return default!; // This line is unreachable
+    }
+
+    [MethodImpl(MethodImplOptions.NoInlining)]
+    public T Last<TArgument>(TArgument argument, Func<T, TArgument, bool> predicate)
+    {
+        ArgumentNullException.ThrowIfNull(predicate);
+
+        scoped ref var itemsReference = ref MemoryMarshal.GetArrayDataReference(_items);
+        var itemsCount = _itemsCount;
+
+        for (var itemIndex = itemsCount - 1; itemIndex >= 0; itemIndex--)
+        {
+            var item = Unsafe.Add(ref itemsReference, itemIndex);
+
+            if (predicate(item, argument)) return item;
+        }
+
+        SequenceExceptions.ThrowNotMatchAny();
+        return default!; // This line is unreachable
+    }
+
+    [MethodImpl(MethodImplOptions.NoInlining)]
+    public T Last<TArgument>(TArgument argument, Func<T, int, TArgument, bool> predicate)
+    {
+        ArgumentNullException.ThrowIfNull(predicate);
+
+        scoped ref var itemsReference = ref MemoryMarshal.GetArrayDataReference(_items);
+        var itemsCount = _itemsCount;
+
+        for (var itemIndex = itemsCount - 1; itemIndex >= 0; itemIndex--)
+        {
+            var item = Unsafe.Add(ref itemsReference, itemIndex);
+
+            if (predicate(item, itemIndex, argument)) return item;
+        }
+
+        SequenceExceptions.ThrowNotMatchAny();
+        return default!; // This line is unreachable
+    }
+
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public T? LastOrDefault()
     {
@@ -59,6 +116,60 @@ public partial class FrozenSequence<T> : SequenceOperator<T>.ILastOperator
             var item = Unsafe.Add(ref itemsReference, itemIndex);
 
             if (predicate(item)) return item;
+        }
+
+        return default;
+    }
+
+    [MethodImpl(MethodImplOptions.NoInlining)]
+    public T? LastOrDefault(Func<T, int, bool> predicate)
+    {
+        ArgumentNullException.ThrowIfNull(predicate);
+
+        scoped ref var itemsReference = ref MemoryMarshal.GetArrayDataReference(_items);
+        var itemsCount = _itemsCount;
+
+        for (var itemIndex = itemsCount - 1; itemIndex >= 0; itemIndex--)
+        {
+            var item = Unsafe.Add(ref itemsReference, itemIndex);
+
+            if (predicate(item, itemIndex)) return item;
+        }
+
+        return default;
+    }
+
+    [MethodImpl(MethodImplOptions.NoInlining)]
+    public T? LastOrDefault<TArgument>(TArgument argument, Func<T, TArgument, bool> predicate)
+    {
+        ArgumentNullException.ThrowIfNull(predicate);
+
+        scoped ref var itemsReference = ref MemoryMarshal.GetArrayDataReference(_items);
+        var itemsCount = _itemsCount;
+
+        for (var itemIndex = itemsCount - 1; itemIndex >= 0; itemIndex--)
+        {
+            var item = Unsafe.Add(ref itemsReference, itemIndex);
+
+            if (predicate(item, argument)) return item;
+        }
+
+        return default;
+    }
+
+    [MethodImpl(MethodImplOptions.NoInlining)]
+    public T? LastOrDefault<TArgument>(TArgument argument, Func<T, int, TArgument, bool> predicate)
+    {
+        ArgumentNullException.ThrowIfNull(predicate);
+
+        scoped ref var itemsReference = ref MemoryMarshal.GetArrayDataReference(_items);
+        var itemsCount = _itemsCount;
+
+        for (var itemIndex = itemsCount - 1; itemIndex >= 0; itemIndex--)
+        {
+            var item = Unsafe.Add(ref itemsReference, itemIndex);
+
+            if (predicate(item, itemIndex, argument)) return item;
         }
 
         return default;
