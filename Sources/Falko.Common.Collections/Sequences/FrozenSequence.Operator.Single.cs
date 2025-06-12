@@ -23,39 +23,27 @@ public partial class FrozenSequence<T> : SequenceOperator<T>.ISingleOperator
         scoped ref var itemsReference = ref MemoryMarshal.GetArrayDataReference(_items);
         var itemsCount = _itemsCount;
 
-        T singleItem;
-
-        var itemIndex = 0;
-
-        for (; itemIndex < itemsCount; itemIndex++)
+        for (var itemIndex = 0; itemIndex < itemsCount; itemIndex++)
         {
             var item = Unsafe.Add(ref itemsReference, itemIndex);
 
             if (predicate(item) is false) continue;
 
-            singleItem = item;
+            for (++itemIndex; itemIndex < itemsCount; itemIndex++)
+            {
+                var checkingItem = Unsafe.Add(ref itemsReference, itemIndex);
 
-            ++itemIndex;
+                if (predicate(checkingItem) is false) continue;
 
-            goto CheckRest;
+                SequenceExceptions.ThrowNotSingle();
+                return default!; // This line is unreachable
+            }
+
+            return item;
         }
 
         SequenceExceptions.ThrowNotMatchAny();
         return default!; // This line is unreachable
-
-        CheckRest:
-
-        for (; itemIndex < itemsCount; itemIndex++)
-        {
-            var item = Unsafe.Add(ref itemsReference, itemIndex);
-
-            if (predicate(item) is false) continue;
-
-            SequenceExceptions.ThrowNotMatchAny();
-            return default!; // This line is unreachable
-        }
-
-        return singleItem;
     }
 
     [MethodImpl(MethodImplOptions.NoInlining)]
@@ -66,39 +54,25 @@ public partial class FrozenSequence<T> : SequenceOperator<T>.ISingleOperator
         scoped ref var itemsReference = ref MemoryMarshal.GetArrayDataReference(_items);
         var itemsCount = _itemsCount;
 
-        T singleItem;
-
-        var itemIndex = 0;
-
-        for (; itemIndex < itemsCount; itemIndex++)
+        for (var itemIndex = 0; itemIndex < itemsCount; itemIndex++)
         {
             var item = Unsafe.Add(ref itemsReference, itemIndex);
 
             if (predicate(item, itemIndex) is false) continue;
 
-            singleItem = item;
+            for (++itemIndex; itemIndex < itemsCount; itemIndex++)
+            {
+                if (predicate(Unsafe.Add(ref itemsReference, itemIndex), itemIndex) is false) continue;
 
-            ++itemIndex;
+                SequenceExceptions.ThrowNotSingle();
+                return default!; // This line is unreachable
+            }
 
-            goto CheckRest;
+            return item;
         }
 
         SequenceExceptions.ThrowNotMatchAny();
         return default!; // This line is unreachable
-
-        CheckRest:
-
-        for (; itemIndex < itemsCount; itemIndex++)
-        {
-            var item = Unsafe.Add(ref itemsReference, itemIndex);
-
-            if (predicate(item, itemIndex) is false) continue;
-
-            SequenceExceptions.ThrowNotMatchAny();
-            return default!; // This line is unreachable
-        }
-
-        return singleItem;
     }
 
     [MethodImpl(MethodImplOptions.NoInlining)]
@@ -109,39 +83,25 @@ public partial class FrozenSequence<T> : SequenceOperator<T>.ISingleOperator
         scoped ref var itemsReference = ref MemoryMarshal.GetArrayDataReference(_items);
         var itemsCount = _itemsCount;
 
-        T singleItem;
-
-        var itemIndex = 0;
-
-        for (; itemIndex < itemsCount; itemIndex++)
+        for (var itemIndex = 0; itemIndex < itemsCount; itemIndex++)
         {
             var item = Unsafe.Add(ref itemsReference, itemIndex);
 
             if (predicate(item, argument) is false) continue;
 
-            singleItem = item;
+            for (++itemIndex; itemIndex < itemsCount; itemIndex++)
+            {
+                if (predicate(Unsafe.Add(ref itemsReference, itemIndex), argument) is false) continue;
 
-            ++itemIndex;
+                SequenceExceptions.ThrowNotSingle();
+                return default!; // This line is unreachable
+            }
 
-            goto CheckRest;
+            return item;
         }
 
         SequenceExceptions.ThrowNotMatchAny();
         return default!; // This line is unreachable
-
-        CheckRest:
-
-        for (; itemIndex < itemsCount; itemIndex++)
-        {
-            var item = Unsafe.Add(ref itemsReference, itemIndex);
-
-            if (predicate(item, argument) is false) continue;
-
-            SequenceExceptions.ThrowNotMatchAny();
-            return default!; // This line is unreachable
-        }
-
-        return singleItem;
     }
 
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -160,35 +120,23 @@ public partial class FrozenSequence<T> : SequenceOperator<T>.ISingleOperator
         scoped ref var itemsReference = ref MemoryMarshal.GetArrayDataReference(_items);
         var itemsCount = _itemsCount;
 
-        T singleItem;
-
-        var itemIndex = 0;
-
-        for (; itemIndex < itemsCount; itemIndex++)
+        for (var itemIndex = 0; itemIndex < itemsCount; itemIndex++)
         {
             var item = Unsafe.Add(ref itemsReference, itemIndex);
 
             if (predicate(item) is false) continue;
 
-            singleItem = item;
+            for (++itemIndex; itemIndex < itemsCount; itemIndex++)
+            {
+                if (predicate(Unsafe.Add(ref itemsReference, itemIndex)) is false) continue;
 
-            ++itemIndex;
+                return default;
+            }
 
-            goto CheckRest;
+            return item;
         }
 
         return default;
-
-        CheckRest:
-
-        for (; itemIndex < itemsCount; itemIndex++)
-        {
-            var item = Unsafe.Add(ref itemsReference, itemIndex);
-
-            if (predicate(item)) return default;
-        }
-
-        return singleItem;
     }
 
     [MethodImpl(MethodImplOptions.NoInlining)]
@@ -199,35 +147,23 @@ public partial class FrozenSequence<T> : SequenceOperator<T>.ISingleOperator
         scoped ref var itemsReference = ref MemoryMarshal.GetArrayDataReference(_items);
         var itemsCount = _itemsCount;
 
-        T singleItem;
-
-        var itemIndex = 0;
-
-        for (; itemIndex < itemsCount; itemIndex++)
+        for (var itemIndex = 0; itemIndex < itemsCount; itemIndex++)
         {
             var item = Unsafe.Add(ref itemsReference, itemIndex);
 
             if (predicate(item, itemIndex) is false) continue;
 
-            singleItem = item;
+            for (++itemIndex; itemIndex < itemsCount; itemIndex++)
+            {
+                if (predicate(Unsafe.Add(ref itemsReference, itemIndex), itemIndex) is false) continue;
 
-            ++itemIndex;
+                return default;
+            }
 
-            goto CheckRest;
+            return item;
         }
 
         return default;
-
-        CheckRest:
-
-        for (; itemIndex < itemsCount; itemIndex++)
-        {
-            var item = Unsafe.Add(ref itemsReference, itemIndex);
-
-            if (predicate(item, itemIndex)) return default;
-        }
-
-        return singleItem;
     }
 
     [MethodImpl(MethodImplOptions.NoInlining)]
@@ -238,35 +174,23 @@ public partial class FrozenSequence<T> : SequenceOperator<T>.ISingleOperator
         scoped ref var itemsReference = ref MemoryMarshal.GetArrayDataReference(_items);
         var itemsCount = _itemsCount;
 
-        T singleItem;
-
-        var itemIndex = 0;
-
-        for (; itemIndex < itemsCount; itemIndex++)
+        for (var itemIndex = 0; itemIndex < itemsCount; itemIndex++)
         {
             var item = Unsafe.Add(ref itemsReference, itemIndex);
 
             if (predicate(item, argument) is false) continue;
 
-            singleItem = item;
+            for (++itemIndex; itemIndex < itemsCount; itemIndex++)
+            {
+                if (predicate(Unsafe.Add(ref itemsReference, itemIndex), argument) is false) continue;
 
-            ++itemIndex;
+                return default;
+            }
 
-            goto CheckRest;
+            return item;
         }
 
         return default;
-
-        CheckRest:
-
-        for (; itemIndex < itemsCount; itemIndex++)
-        {
-            var item = Unsafe.Add(ref itemsReference, itemIndex);
-
-            if (predicate(item, argument)) return default;
-        }
-
-        return singleItem;
     }
 
     [MethodImpl(MethodImplOptions.NoInlining)]
@@ -277,34 +201,22 @@ public partial class FrozenSequence<T> : SequenceOperator<T>.ISingleOperator
         scoped ref var itemsReference = ref MemoryMarshal.GetArrayDataReference(_items);
         var itemsCount = _itemsCount;
 
-        T singleItem;
-
-        var itemIndex = 0;
-
-        for (; itemIndex < itemsCount; itemIndex++)
+        for (var itemIndex = 0; itemIndex < itemsCount; itemIndex++)
         {
             var item = Unsafe.Add(ref itemsReference, itemIndex);
 
             if (predicate(item, itemIndex, argument) is false) continue;
 
-            singleItem = item;
+            for (++itemIndex; itemIndex < itemsCount; itemIndex++)
+            {
+                if (predicate(Unsafe.Add(ref itemsReference, itemIndex), itemIndex, argument) is false) continue;
 
-            ++itemIndex;
+                return default;
+            }
 
-            goto CheckRest;
+            return item;
         }
 
         return default;
-
-        CheckRest:
-
-        for (; itemIndex < itemsCount; itemIndex++)
-        {
-            var item = Unsafe.Add(ref itemsReference, itemIndex);
-
-            if (predicate(item, itemIndex, argument)) return default;
-        }
-
-        return singleItem;
     }
 }
