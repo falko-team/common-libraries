@@ -1,4 +1,4 @@
-namespace Falko.Common.Tasks;
+namespace Falko.Common.Extensions;
 
 public static partial class TaskExtensions
 {
