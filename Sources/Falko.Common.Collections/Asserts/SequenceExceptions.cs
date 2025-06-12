@@ -62,7 +62,7 @@ internal static class SequenceExceptions
     {
         if (count is not 1)
         {
-            throw new InvalidOperationException("The source sequence contains more than one element or is empty.");
+            ThrowNotSingle();
         }
     }
 
@@ -70,5 +70,11 @@ internal static class SequenceExceptions
     public static void ThrowNotMatchAny()
     {
         throw new InvalidOperationException("The source sequence does not match any of the specified conditions.");
+    }
+
+    [DoesNotReturn]
+    public static void ThrowNotSingle()
+    {
+        throw new InvalidOperationException("The source sequence contains more than one element or is empty.");
     }
 }
