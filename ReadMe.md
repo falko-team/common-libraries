@@ -1,7 +1,6 @@
 # Falko Library
 
-The **Falko Common Library** is a bundle of libraries
-that contains reusable code that use across **Falko Team** projects.
+A bundle of libraries that contains reusable code used across other projects.
 
 ## License
 
