@@ -8,7 +8,11 @@ public abstract class ElementaryDisposableScope : IDisposableScope
 
     private const int IsNotDisposed = 0;
 
+#if NET9_0_OR_GREATER
     private Lock _locker = new();
+#else
+    private object _locker = new();
+#endif
 
     // ReSharper disable InconsistentlySynchronizedField
     private Sequence<IAsyncDisposable> _asyncDisposables = new();

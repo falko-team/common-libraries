@@ -78,9 +78,11 @@ public static partial class SequenceExtensions
 
     private static void ForEach<T>(IEnumerable<T> enumerable, Action<T, int> action)
     {
-        foreach (var (index, item) in enumerable.Index())
+        using var enumerator = enumerable.GetEnumerator();
+
+        for (var index = 0; enumerator.MoveNext(); ++index)
         {
-            action(item, index);
+            action(enumerator.Current, index);
         }
     }
 
@@ -104,9 +106,11 @@ public static partial class SequenceExtensions
         Action<T, int, TArgument> action
     )
     {
-        foreach (var (index, item) in enumerable.Index())
+        using var enumerator = enumerable.GetEnumerator();
+
+        for (var index = 0; enumerator.MoveNext(); ++index)
         {
-            action(item, index, argument);
+            action(enumerator.Current, index, argument);
         }
     }
 }
