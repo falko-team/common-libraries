@@ -1,6 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <Import Project="../../Sources.Build.props" />
-    <ItemGroup>
-      <ProjectReference Include="..\Falko.Common.Collections\Falko.Common.Collections.csproj" />
+    
+    <ItemGroup Label="Dependencies">
+        <ProjectReference Include="..\Falko.Common.Collections\Falko.Common.Collections.csproj" />
     </ItemGroup>
 </Project>
