@@ -1,6 +1,6 @@
 using System.Runtime.CompilerServices;
 
-namespace Falko.Common.Tasks;
+namespace Falko.Common.Extensions;
 
 public static partial class ValueTaskExtensions
 {
