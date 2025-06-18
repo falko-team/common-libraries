@@ -12,15 +12,6 @@ modification, are permitted provided that the following conditions are met:
    this list of conditions and the following disclaimer in the documentation
    and/or other materials provided with the distribution.
 
-3. Redistributions or use of the source code, binary, or any derivative works
-   may not be used in the development, testing, or deployment of systems intended primarily
-   for military operations or surveillance systems for military purposes.
-
-4. Redistributions or use of the source code, binary,
-   or derivative works may not be used for any activity that violates applicable laws,
-   including but not limited to intellectual property rights, privacy regulations,
-   or other legal frameworks governing data protection.
-
 > THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
 AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
 IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
