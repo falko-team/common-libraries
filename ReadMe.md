@@ -9,4 +9,4 @@ This project is licensed under the
 
 _Contributions are welcome!_
 
-**© 2024-2025, Falko Team**
+**© 2024-2025, Falko**

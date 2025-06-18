@@ -16,9 +16,9 @@
     </PropertyGroup>
 
     <PropertyGroup Label="Description">
-        <Company>Falko Team</Company>
+        <Company>Falko</Company>
         <Authors>Rima Falko; Timur Falko</Authors>
         <Description>A bundle of libraries that contains reusable code used across other projects</Description>
-        <Copyright>Copyright (C) 2024-2025, Falko Team</Copyright>
+        <Copyright>Copyright (C) 2024-2025, Falko</Copyright>
     </PropertyGroup>
 </Project>
